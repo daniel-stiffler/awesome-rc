@@ -28,7 +28,7 @@ you have any questions, please see a TA during office hours...
 1. Clone the repository from ECE Gitlab
 
 ```
-git clone --recursive http://git.ece.cmu.edu/dstiffle/awesome-rc.git
+git clone --recursive https://github.com/daniel-stiffler/awesome-rc.git
 ```
 
 2. Make necessary backups of your personal configuration files
@@ -88,4 +88,4 @@ cp -r enhancd ~/enhancd
 
 ## Contributing
 
-* **Daniel Stiffler** - *Initial Work* - [dstiffle](https://git.ece.cmu.edu/dstiffle/)
+* **Daniel Stiffler** - *Initial Work* - [dstiffle](https://github.com/daniel-stiffler/)
