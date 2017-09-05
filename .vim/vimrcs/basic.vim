@@ -20,6 +20,9 @@ set ttyfast
 " Enable comment line auto formatting
 set formatoptions=croq
 
+" Auto-wrapping disabled by default
+set textwidth=80
+
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
