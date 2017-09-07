@@ -20,9 +20,6 @@ set ttyfast
 " Enable comment line auto formatting
 set formatoptions=croq
 
-" Auto-wrapping disabled by default
-set textwidth=80
-
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -119,6 +116,7 @@ set foldlevelstart=10
 set foldnestmax=10
 nnoremap <space> za
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,6 +139,7 @@ set ffs=unix,dos,mac
 
 set colorcolumn=81
 highlight ColorColumn ctermbg=13
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -166,8 +165,8 @@ set tabstop=2
 set softtabstop=2
 
 " Linebreak on 500 characters
-set lbr
-set tw=500
+set linebreak
+set textwidth=80
 
 set autoindent "Auto indent
 set smartindent "Smart indent
@@ -330,8 +329,6 @@ map <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
