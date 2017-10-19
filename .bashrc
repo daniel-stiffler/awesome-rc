@@ -55,6 +55,7 @@ fi
 
 if [ -f ~/enhancd/init.sh ]; then
   export ENHANCD_DOT_ARG='...'
+  export ENHANCD_DISABLE_HOME=1
   . ~/enhancd/init.sh
 fi
 
