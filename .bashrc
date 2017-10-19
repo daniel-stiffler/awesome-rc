@@ -17,6 +17,7 @@ HISTFILESIZE=2000
 # Check the window size after each command and, if necessary, update the values
 # of LINES and COLUMNS.
 shopt -s checkwinsize
+export DISPLAY='localhost:0.0'
 
 # make less more friendly for non-text input files, see lesspipe(1)
 if [ -x /usr/bin/lesspipe ]; then
@@ -53,9 +54,13 @@ if [ -f ~/.fzf.bash ]; then
 fi
 
 if [ -f ~/enhancd/init.sh ]; then
+  export ENHANCD_DOT_ARG='...'
   . ~/enhancd/init.sh
 fi
 
 if [ -f ~/liquidprompt/liquidprompt ]; then
   . ~/liquidprompt/liquidprompt
 fi
+
+# SSH-keygen manager
+eval `keychain --eval --agents ssh id_rsa`

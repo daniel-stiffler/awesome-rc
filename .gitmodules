@@ -61,3 +61,9 @@
 [submodule ".vim/bundle/youcompleteme"]
 	path = .vim/bundle/youcompleteme
 	url = https://github.com/valloric/youcompleteme.git
+[submodule "vim"]
+	path = vim
+	url = git@github.com:vim/vim.git
+[submodule "keychain"]
+	path = keychain
+	url = git@github.com:funtoo/keychain.git
