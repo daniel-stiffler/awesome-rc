@@ -1,6 +1,8 @@
 set nocompatible " Be iMproved, required for Vundle
 filetype off  " Required for Vundle
 
+set rtp+=$HOME/.vim/bundle/Vundle.vim
+
 " Vundle brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
