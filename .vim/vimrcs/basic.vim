@@ -8,8 +8,7 @@ set nocompatible
 set history=700
 
 " Enable filetype plugins
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -18,11 +17,18 @@ set autoread
 set ttyfast
 
 " Enable comment line auto formatting
-set formatoptions=croq
+"
+" t - autowrap normal text
+" c - autowrap comments
+" q - gq formats comments
+" n - autowrap lists
+" 1 - break before single-letter words
+set formatoptions=tcqn1
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
+let maplocalleader = ","
 let g:mapleader = ","
 
 " Fast saving
@@ -71,7 +77,7 @@ set ruler
 set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
-set hid
+set hidden
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -95,6 +101,9 @@ set hlsearch
 " Makes search act like search in modern browsers
 set incsearch
 
+" Completion recognizes capitalization
+set infercase
+
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
@@ -108,13 +117,16 @@ set mat=2
 
 " No annoying sound on errors
 set noerrorbells
-set novisualbell
-set t_vb=
+set visualbell t_vb=
 set tm=500
 
 set foldlevelstart=10
 set foldnestmax=10
+silent! set foldmethod=marker
+
+" Use space key to toggle folds
 nnoremap <space> za
+vnoremap <space> zf
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -137,17 +149,17 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-set colorcolumn=81
+set colorcolumn=101
 highlight ColorColumn ctermbg=13
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
 set noswapfile
+set fileformats=unix,dos,mac
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -161,16 +173,30 @@ set smarttab
 
 " 1 tab == 2 spaces
 set shiftwidth=2
+set shiftround
 set tabstop=2
 set softtabstop=2
 
 " Linebreak on 500 characters
 set linebreak
-set textwidth=80
+set showbreak=
+set textwidth=100
 
-set autoindent "Auto indent
-set smartindent "Smart indent
-set wrap "Wrap lines
+"Auto indent
+set autoindent
+
+"Smart indent
+set smartindent
+
+" Make autoindent use same characters as previous line
+set copyindent
+
+" Wrap lines
+set wrap
+
+" Show whitespace as special characters
+set list
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
 
 """"""""""""""""""""""""""""""
@@ -210,18 +236,10 @@ map <leader>bd :Bclose<cr>
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
 
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
-
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
-
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -262,11 +280,24 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
+" Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <M-j> mz:m+<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+
+nmap \A :set formatoptions+=a<CR>:echo "Autowrap enabled"<CR>
+nmap \a :set formatoptions-=a<CR>:echo "Autowrap disabled"<CR>
+
+" Git branch status
+nmap \g :Gstatus<CR>
+
+" Sort items, newline delimited
+nmap \i vip:sort<CR>
+
+nmap \s :setlocal invspell<CR>
+nmap \u :setlocal list!<CR>:setlocal list?<CR>
+nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
 
 " Strip whitespace from end of lines when writing file
 autocmd BufWritePre * :%s/\s\+$//e
@@ -276,31 +307,16 @@ autocmd BufWritePre * :%s/\s\+$//e
 " => Ack searching and cope displaying
 "    requires ack.vim - it's much better than vimgrep/grep
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When you press gv you Ack after the selected text
-vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-
-" Open Ack and put the cursor in the right position
-map <leader>g :Ack
-
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with Ack, display your results in cope by doing:
-"   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+" Search for the word under the cursor in the current directory
+nmap <M-k>    :Ack!  "\b<cword>\b" <CR>
+nmap <Esc>k   :Ack!  "\b<cword>\b" <CR>
+nmap ˚        :Ack!  "\b<cword>\b" <CR>
 
+nmap <M-S-k>  :Ggrep! "\b<cword>\b" <CR>
+nmap <Esc>K   :Ggrep! "\b<cword>\b" <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking

@@ -1,9 +1,6 @@
 set nocompatible " Be iMproved, required for Vundle
 filetype off  " Required for Vundle
 
-set rtp+=$HOME/fzf
-set rtp+=$HOME/.vim/bundle/Vundle.vim
-
 " Vundle brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -14,11 +11,14 @@ call vundle#begin()
 " <BEGIN> Vim Plugin Management
 
 Plugin 'VundleVim/Vundle.vim' " Let Vundle handle itself, required
+Plugin 'tpope/vim-repeat' " Use . to repeat plugin maps
 Plugin 'tpope/vim-fugitive' " Fugitive
 Plugin 'scrooloose/nerdtree' " The NERD tree
-Plugin 'scrooloose/syntastic' " Syntastic
 Plugin 'tpope/vim-surround' " Surround: Quoting / Parenthesizing Made Simple
-Plugin 'kien/ctrlp.vim' " CTRL-P Fuzzy finder
+Plugin 'junegunn/fzf.vim' " Vim Fuzzy-Finder
+Plugin 'mileszs/ack.vim' " ACK Search Tool
+Plugin 'sheerun/vim-polyglot' " Collection of language packs
+Plugin 'w0rp/ale' " Asynchronous Lint Engine
 Plugin 'altercation/vim-colors-solarized' " Solarized Palette
 Plugin 'bling/vim-airline' " Vim Airline
 Plugin 'majutsushi/tagbar' " Tagbar
@@ -28,9 +28,6 @@ Plugin 'valloric/youcompleteme' " YCM Code-completion
 Plugin 'vim-airline/vim-airline-themes' " Vim Airline Themes
 Plugin 'nathanaelkane/vim-indent-guides' " Indent Guides
 Plugin 'plasticboy/vim-markdown' " Markdown in Vim
-Plugin 'jeffkreeftmeijer/vim-numbertoggle' " Relative number toggling
-Plugin 'nachumk/systemverilog.vim' " SystemVerilog syntax
-Plugin 'Rykka/riv.vim' " ReStructured Text
 
 " <END> Vim Plugin Management
 call vundle#end()
@@ -39,9 +36,8 @@ filetype plugin indent on " Return to normal treatment of files
 
 " Source multiple levels of vimrcs
 source $HOME/.vim/vimrcs/basic.vim
-source $HOME/.vim/vimrcs/filetypes.vim
-source $HOME/.vim/vimrcs/plugins_config.vim
 source $HOME/.vim/vimrcs/extended.vim
+source $HOME/.vim/vimrcs/plugins_config.vim
 
 " Get rid of warning on save/exit typo
 command WQ wq
