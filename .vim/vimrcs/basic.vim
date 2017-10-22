@@ -149,7 +149,7 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-set colorcolumn=101
+set colorcolumn=81
 highlight ColorColumn ctermbg=13
 
 
@@ -177,10 +177,9 @@ set shiftround
 set tabstop=2
 set softtabstop=2
 
-" Linebreak on 500 characters
 set linebreak
 set showbreak=
-set textwidth=100
+set textwidth=80
 
 "Auto indent
 set autoindent
