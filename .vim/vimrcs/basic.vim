@@ -132,9 +132,8 @@ vnoremap <space> zf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-syntax enable
-
+let g:solarized_termtrans=1
+let g:solarized_termcolors=16
 set background=dark
 colorscheme solarized
 
@@ -195,7 +194,7 @@ set wrap
 
 " Show whitespace as special characters
 set list
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,eol:¬
 
 
 """"""""""""""""""""""""""""""

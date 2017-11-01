@@ -30,11 +30,13 @@ Plugin 'valloric/youcompleteme' " YCM Code-completion
 Plugin 'vim-airline/vim-airline-themes' " Vim Airline Themes
 Plugin 'nathanaelkane/vim-indent-guides' " Indent Guides
 Plugin 'plasticboy/vim-markdown' " Markdown in Vim
+Plugin 'rhysd/vim-clang-format' " clang-format wrapper
 
 " <END> Vim Plugin Management
 call vundle#end()
 
 filetype plugin indent on " Return to normal treatment of files
+syntax enable
 
 " Source multiple levels of vimrcs
 source $HOME/.vim/vimrcs/basic.vim
