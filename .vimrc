@@ -17,26 +17,29 @@ Plugin 'tpope/vim-repeat' " Use . to repeat plugin maps
 Plugin 'tpope/vim-fugitive' " Fugitive
 Plugin 'scrooloose/nerdtree' " The NERD tree
 Plugin 'tpope/vim-surround' " Surround: Quoting / Parenthesizing Made Simple
-Plugin 'junegunn/fzf.vim' " Vim Fuzzy-Finder
-Plugin 'mileszs/ack.vim' " ACK Search Tool
 Plugin 'sheerun/vim-polyglot' " Collection of language packs
-Plugin 'w0rp/ale' " Asynchronous Lint Engine
-Plugin 'altercation/vim-colors-solarized' " Solarized Palette
+" Plugin 'w0rp/ale' " Asynchronous Lint Engine
+Plugin 'morhetz/gruvbox'  " Gruvbox Palette
 Plugin 'bling/vim-airline' " Vim Airline
 Plugin 'majutsushi/tagbar' " Tagbar
 Plugin 'scrooloose/nerdcommenter' " NERD Commenting
-Plugin 'airblade/vim-gitgutter' " Show git diffs in the gutter
 Plugin 'valloric/youcompleteme' " YCM Code-completion
 Plugin 'vim-airline/vim-airline-themes' " Vim Airline Themes
 Plugin 'nathanaelkane/vim-indent-guides' " Indent Guides
 Plugin 'plasticboy/vim-markdown' " Markdown in Vim
 Plugin 'rhysd/vim-clang-format' " clang-format wrapper
+Plugin 'kshenoy/vim-signature' " Show marks in the gutter
+Plugin 'ctrlpvim/ctrlp.vim' " Fuzzy finder
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'nfvs/vim-perforce'
 
 " <END> Vim Plugin Management
 call vundle#end()
 
 filetype plugin indent on " Return to normal treatment of files
 syntax enable
+set modeline
+set modelines=2
 
 " Source multiple levels of vimrcs
 source $HOME/.vim/vimrcs/basic.vim

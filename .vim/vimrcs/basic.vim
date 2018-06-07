@@ -122,7 +122,7 @@ set tm=500
 
 set foldlevelstart=10
 set foldnestmax=10
-silent! set foldmethod=marker
+silent! set foldmethod=syntax
 
 " Use space key to toggle folds
 nnoremap <space> za
@@ -132,11 +132,6 @@ vnoremap <space> zf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:solarized_termtrans=1
-let g:solarized_termcolors=16
-set background=dark
-colorscheme solarized
-
 set guioptions-=T
 set guioptions-=e
 set t_Co=256
@@ -144,6 +139,10 @@ set guitablabel=%M\ %t
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
+
+set background=dark
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
