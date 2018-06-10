@@ -19,7 +19,11 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 export DISPLAY='localhost:0.0'
 
-# make less more friendly for non-text input files, see lesspipe(1)
+set -o vi
+export EDITOR='vim'
+export VISUAL='vim'
+
+# Make less more friendly for non-text input files, see lesspipe(1)
 if [ -x /usr/bin/lesspipe ]; then
   eval "$(SHELL=/bin/sh lesspipe)"
 fi
@@ -29,34 +33,9 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
   debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# Enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
-fi
-
-# Some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
-fi
-
-if [ -f ~/.fzf.bash ]; then
-  . ~/.fzf.bash
-fi
-
-if [ -f ~/enhancd/init.sh ]; then
-  export ENHANCD_DISABLE_DOT=1
-  export ENHANCD_DISABLE_HOME=1
-  . ~/enhancd/init.sh
 fi
 
 if [ -f ~/liquidprompt/liquidprompt ]; then

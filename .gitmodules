@@ -1,12 +1,6 @@
 [submodule ".vim/bundle/Vundle.vim"]
 	path = .vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
-[submodule "enhancd"]
-	path = enhancd
-	url = https://github.com/b4b4r07/enhancd.git
-[submodule "fzf"]
-	path = fzf
-	url = https://github.com/junegunn/fzf.git
 [submodule "liquidprompt"]
 	path = liquidprompt
 	url = https://github.com/nojhan/liquidprompt.git
